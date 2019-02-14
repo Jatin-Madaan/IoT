@@ -1,0 +1,23 @@
+#include <DHT.h>
+//#include <DHT_U.h>
+#include <Adafruit_Sensor.h>
+#define DHTPIN 8
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Serial.println("DHTType!");
+  dht.begin();
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+  Serial.print("Humidity : \n");
+  Serial.println(h);
+  Serial.println("Temperature :");
+  Serial.println(t);  
+  delay(500);
+}
